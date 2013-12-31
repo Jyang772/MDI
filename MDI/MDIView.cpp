@@ -50,12 +50,19 @@ BOOL CMDIView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMDIView drawing
 
-void CMDIView::OnDraw(CDC* /*pDC*/)
+void CMDIView::OnDraw(CDC* pDC)
 {
 	CMDIDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
+
+	pDC->MoveTo(50, 50);
+	pDC->LineTo(50, 200);
+	pDC->LineTo(150, 200);
+	pDC->LineTo(150, 50);
+	pDC->LineTo(50, 50);
+
 
 	// TODO: add draw code for native data here
 }
