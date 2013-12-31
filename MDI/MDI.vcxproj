@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="ElementColor.h" />
+    <ClInclude Include="ElementType.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MDI.h" />
     <ClInclude Include="MDIDoc.h" />

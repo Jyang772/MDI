@@ -96,6 +96,17 @@ BEGIN
     SEPARATOR
     BUTTON      ID_FILE_PRINT
     BUTTON      ID_APP_ABOUT
+    SEPARATOR
+    BUTTON      ID_ELEMENT_LINE
+    BUTTON      ID_ELEMENT_RECTANGLE
+    BUTTON      ID_ELEMENT_CIRCLE
+    BUTTON      ID_ELEMENT_CURVE
+    BUTTON      ID_ELEMENT_ELLIPSE
+    SEPARATOR
+    BUTTON      ID_COLOR_BLACK
+    BUTTON      ID_COLOR_RED
+    BUTTON      ID_COLOR_GREEN
+    BUTTON      ID_COLOR_BLUE
 END
 
 
@@ -166,6 +177,7 @@ BEGIN
         MENUITEM "Rectangle",                   ID_ELEMENT_RECTANGLE
         MENUITEM "Circle",                      ID_ELEMENT_CIRCLE
         MENUITEM "Curve",                       ID_ELEMENT_CURVE
+        MENUITEM "Ellipse",                     ID_ELEMENT_ELLIPSE, HELP
     END
     POPUP "Color"
     BEGIN
@@ -416,11 +428,19 @@ END
 
 STRINGTABLE
 BEGIN
-    ID_ELEMENT_LINE         "Draw Lines"
-    ID_COLOR_BLACK          "Black"
-    ID_COLOR_RED            "Red"
-    ID_COLOR_GREEN          "Green"
-    ID_COLOR_BLUE           "Blue"
+    ID_ELEMENT_LINE         "Draw Lines \nDraw Lines"
+    ID_ELEMENT_RECTANGLE    "Draw Rectangles \nDraw Rectangles"
+    ID_ELEMENT_CIRCLE       "Draw Circles \nDraw Circles"
+    ID_ELEMENT_CURVE        "Draw Curves \nDraw Curves"
+    ID_COLOR_BLACK          "Black \nBlack"
+    ID_COLOR_RED            "Red \nRed"
+    ID_COLOR_GREEN          "Green \nGreen"
+    ID_COLOR_BLUE           "Blue \nBlue"
+END
+
+STRINGTABLE
+BEGIN
+    ID_ELEMENT_ELLIPSE       "Draw Ellipse \n Draw Ellipse"
 END
 
 #endif    // English (United States) resources

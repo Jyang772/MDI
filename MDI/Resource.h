@@ -14,13 +14,15 @@
 #define ID_COLOR_RED                    32776
 #define ID_COLOR_GREEN                  32777
 #define ID_COLOR_BLUE                   32778
+#define ID_BUTTON32805                  32805
+#define ID_ELEMENT_ELLIPSE              32805
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        310
-#define _APS_NEXT_COMMAND_VALUE         32779
+#define _APS_NEXT_COMMAND_VALUE         32807
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
