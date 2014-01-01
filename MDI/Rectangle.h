@@ -6,7 +6,7 @@ class CRectangle :
 public:
 	
 	virtual ~CRectangle();
-	//virtual void Draw(CDC* pDC);
+	virtual void Draw(CDC* pDC);
 	CRectangle(const CPoint& start, const CPoint& end, COLORREF color);
 
 protected:
