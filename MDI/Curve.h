@@ -9,6 +9,7 @@ public:
 
 	CCurve(const CPoint& start, const CPoint& end, COLORREF color);
 
+	void Draw(CDC* pDC);
 	void AddSegment(const CPoint& point);                //Add segment to curve
 
 protected:

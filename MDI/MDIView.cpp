@@ -160,19 +160,34 @@ void CMDIView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CMDIView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	if (nFlags & MK_LBUTTON)
+	// Define a Device Context object for the view
+	CClientDC aDC(this);                                                 // DC is for this view
+
+	// Verify the left button is down and mouse messages captured
+	if ((nFlags & MK_LBUTTON) && (this == GetCapture()))
 	{
-		m_SecondPoint = point;
-
-		//Test for previous element
+		m_SecondPoint = point;                                             // Save the current cursor position
+		if (m_pTempElement)
 		{
-
+			// An element was created previously
+			if (ElementType::CURVE == GetDocument()->GetElementType())        // A curve?
+			{  // We are drawing a curve so add a segment to the existing curve
+				std::static_pointer_cast<CCurve>(m_pTempElement)->AddSegment(m_SecondPoint);
+				m_pTempElement->Draw(&aDC);                                   // Now draw it
+				return;                                                       // We are done
+			}
+			else
+			{
+				// If we get to here it's not a curve so
+				// redraw the old element so it disappears from the view
+				aDC.SetROP2(R2_NOTXORPEN);                                     // Set the drawing mode
+				m_pTempElement->Draw(&aDC);                                    // Redraw the old element to erase it
+			}
 		}
 
-		//Create new element
-
+		// Create a temporary element of the type and color that
+		// is recorded in the document object, and draw it
+		m_pTempElement.reset(CreateElement());                             // Create a new element
+		m_pTempElement->Draw(&aDC);                                        // Draw the element
 	}
-
-
-	CView::OnMouseMove(nFlags, point);
 }
