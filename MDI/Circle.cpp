@@ -23,3 +23,18 @@ CCircle::CCircle(const CPoint& start, const CPoint& end, COLORREF color) : CElem
 CCircle::~CCircle()
 {
 }
+
+
+void CCircle::Draw(CDC* pDC)
+{
+	CPen aPen;
+	CreatePen(aPen);
+
+	CPen* pOldPen = pDC->SelectObject(&aPen);
+	CBrush *pOldBrush = dynamic_cast<CBrush*>(pDC->SelectStockObject(NULL_BRUSH));
+
+	pDC->Ellipse(m_StartPoint.x, m_StartPoint.y, m_BottomRight.x, m_BottomRight.y);
+	
+	pDC->SelectObject(pOldPen);
+	pDC->SelectObject(pOldBrush);
+}
