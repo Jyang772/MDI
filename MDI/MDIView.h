@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "atltypes.h"
 
 
 class CMDIView : public CView
@@ -40,6 +41,14 @@ protected:
 // Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+protected:
+	// First point recorded for an element
+	CPoint m_FirstPoint;
+	CPoint m_SecondPoint;
 };
 
 #ifndef _DEBUG  // debug version in MDIView.cpp

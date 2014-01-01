@@ -26,11 +26,15 @@ BEGIN_MESSAGE_MAP(CMDIView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_LBUTTONUP()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // CMDIView construction/destruction
 
-CMDIView::CMDIView()
+CMDIView::CMDIView(): m_FirstPoint(0)
+, m_SecondPoint(0)
 {
 	// TODO: add construction code here
 
@@ -70,14 +74,28 @@ void CMDIView::OnDraw(CDC* pDC)
 	CPen* pOldPen = pDC->SelectObject(&aPen);
 	pDC->Ellipse(50, 50, 150, 150);
 
-
 	CRect rect(250, 50, 300, 100);
 	CPoint start(275, 100);
 	CPoint end(250, 75);	
-	pDC->SelectObject(pOldPen);
+	pDC->SelectObject(pOldPen); 
 	pDC->Arc(&rect, start, end);
 
-	// TODO: add draw code for native data here
+	
+
+
+	CBrush aBrush;
+	aBrush.CreateHatchBrush(HS_DIAGCROSS, (255, 0, 0));
+
+	//CBrush* pOldBrush = pDC->SelectObject(&aBrush);
+
+	CBrush* pOldBrush = dynamic_cast<CBrush*>(pDC->SelectStockObject(NULL_BRUSH));     //Return type for SelectStockObject is CDGIObject*
+
+	
+	pDC->SelectObject(pOldBrush);
+
+
+
+// TODO: add draw code for native data here
 }
 
 
@@ -122,3 +140,39 @@ CMDIDoc* CMDIView::GetDocument() const // non-debug version is inline
 
 
 // CMDIView message handlers
+
+
+void CMDIView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CView::OnLButtonUp(nFlags, point);
+}
+
+
+void CMDIView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	m_FirstPoint = point;
+
+	CView::OnLButtonDown(nFlags, point);
+}
+
+
+void CMDIView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (nFlags & MK_LBUTTON)
+	{
+		m_SecondPoint = point;
+
+		//Test for previous element
+		{
+
+		}
+
+		//Create new element
+
+	}
+
+
+	CView::OnMouseMove(nFlags, point);
+}
