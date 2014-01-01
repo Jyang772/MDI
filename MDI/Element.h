@@ -16,6 +16,18 @@ protected:
 	CRect m_EnclosingRect;         //Enclosing rectangle
 
 	CElement();
-	CElement(const CPoint& start, COLORREF color, int penWidth = 1);
+	CElement(const CPoint& start, COLORREF color, int penWidth = 1);             //Constructor
+
+
+	void CreatePen(CPen& aPen)
+	{
+
+		if (!aPen.CreatePen(PS_SOLID, m_PenWidth, m_Color))
+		{
+			AfxMessageBox(_T("Pen Creation Failed."), MB_OK);
+			AfxAbort();
+		}
+	}
+
 };
 

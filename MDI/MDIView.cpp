@@ -56,42 +56,42 @@ BOOL CMDIView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CMDIView::OnDraw(CDC* pDC)
 {
-	CMDIDoc* pDoc = GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
+	//CMDIDoc* pDoc = GetDocument();
+	//ASSERT_VALID(pDoc);
+	//if (!pDoc)
+	//	return;
 
-	pDC->MoveTo(50, 50);
-	pDC->LineTo(50, 150);
-	pDC->LineTo(150, 150);
-	pDC->LineTo(150, 50);
-	pDC->LineTo(50, 50);
-
-
-	CPen aPen;                                                    //Create a CPen object
-	aPen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));                   //Initialize Pen 
-	 
-	CPen* pOldPen = pDC->SelectObject(&aPen);
-	pDC->Ellipse(50, 50, 150, 150);
-
-	CRect rect(250, 50, 300, 100);
-	CPoint start(275, 100);
-	CPoint end(250, 75);	
-	pDC->SelectObject(pOldPen); 
-	pDC->Arc(&rect, start, end);
-
-	
+	//pDC->MoveTo(50, 50);
+	//pDC->LineTo(50, 150);
+	//pDC->LineTo(150, 150);
+	//pDC->LineTo(150, 50);
+	//pDC->LineTo(50, 50);
 
 
-	CBrush aBrush;
-	aBrush.CreateHatchBrush(HS_DIAGCROSS, (255, 0, 0));
+	//CPen aPen;                                                    //Create a CPen object
+	//aPen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));                   //Initialize Pen 
+	// 
+	//CPen* pOldPen = pDC->SelectObject(&aPen);
+	//pDC->Ellipse(50, 50, 150, 150);
 
-	//CBrush* pOldBrush = pDC->SelectObject(&aBrush);
+	//CRect rect(250, 50, 300, 100);
+	//CPoint start(275, 100);
+	//CPoint end(250, 75);	
+	//pDC->SelectObject(pOldPen); 
+	//pDC->Arc(&rect, start, end);
 
-	CBrush* pOldBrush = dynamic_cast<CBrush*>(pDC->SelectStockObject(NULL_BRUSH));     //Return type for SelectStockObject is CDGIObject*
+	//
 
-	
-	pDC->SelectObject(pOldBrush);
+
+	//CBrush aBrush;
+	//aBrush.CreateHatchBrush(HS_DIAGCROSS, (255, 0, 0));
+
+	////CBrush* pOldBrush = pDC->SelectObject(&aBrush);
+
+	//CBrush* pOldBrush = dynamic_cast<CBrush*>(pDC->SelectStockObject(NULL_BRUSH));     //Return type for SelectStockObject is CDGIObject*
+
+	//
+	//pDC->SelectObject(pOldBrush);
 
 
 

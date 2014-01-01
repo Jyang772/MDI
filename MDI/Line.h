@@ -4,7 +4,14 @@ class CLine :
 	public CElement
 {
 public:
-	CLine();
 	virtual ~CLine();
+	virtual void Draw(CDC* pDC) override;
+
+	CLine(const CPoint& start, const CPoint& end, COLORREF aColor);
+
+protected:
+	CPoint m_EndPoint;
+
+	CLine(void);
 };
 
