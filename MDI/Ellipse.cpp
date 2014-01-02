@@ -17,14 +17,14 @@ CEllipse::CEllipse(const CPoint& center, const CPoint& end, COLORREF color) : CE
 	//m_StartPoint.Offset(halfWidth, halfHeight);                 // Top left is offset by minus half height and half width
 	//m_BottomRight.Offset(-halfWidth, -halfHeight);                  // Bottom right point you add to the center coordinates
 
-	m_StartPoint.x += center.x;
-	m_StartPoint.y += center.y; 
-	m_BottomRight.x -= center.x;
-	m_BottomRight.y -= center.y;
+	m_StartPoint.x -= halfWidth;
+	m_StartPoint.y -= halfHeight; 
+	m_BottomRight.x += halfWidth;
+	m_BottomRight.y += halfHeight;
 
 	// Points must differ by 2 in x & y for valid rectangle
-	if (m_StartPoint.x - m_BottomRight.x < 2) m_BottomRight.x += 2;
-	if (m_StartPoint.y - m_BottomRight.y < 2) m_BottomRight.y += 2;
+	//if (m_StartPoint.x - m_BottomRight.x < 2) m_BottomRight.x += 2;
+	//if (m_StartPoint.y - m_BottomRight.y < 2) m_BottomRight.y += 2;
 
 	m_EnclosingRect = CRect(m_StartPoint, m_BottomRight);
 	m_EnclosingRect.NormalizeRect();;
