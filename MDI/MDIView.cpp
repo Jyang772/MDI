@@ -10,6 +10,7 @@
 #endif
 
 #include "MDIDoc.h"
+#include "MainFrm.h"
 #include "MDIView.h"
 #include "Line.h"
 #include "Rectangle.h"
@@ -116,8 +117,8 @@ CMDIDoc* CMDIView::GetDocument() const // non-debug version is inline
 #endif //_DEBUG
 
 
-// CMDIView message handlers
 
+// CMDIView message handlers
 
 void CMDIView::OnLButtonDown(UINT nFlags, CPoint point)
 {
@@ -174,6 +175,14 @@ void CMDIView::OnMouseMove(UINT nFlags, CPoint point)
     m_pTempElement.reset(CreateElement());                             // Create a new element
     m_pTempElement->Draw(&aDC);                                        // Draw the element
   }
+
+  CString s;
+  s.Format(L"X=%d Y=%d", point.x, point.y);
+  CMainFrame* pFrame = (CMainFrame*)AfxGetApp()->m_pMainWnd;
+  CStatusBar* pStatus = &pFrame->m_wndStatusBar;
+  pStatus->SetPaneText(0, s);
+
+
 }
 
 // Create an element of the current type

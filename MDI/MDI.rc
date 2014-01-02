@@ -404,6 +404,11 @@ BEGIN
     ID_ELEMENT_ELLIPSE      "Draw Ellipse \nDraw Ellipse"
 END
 
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_COORD      "Coordinates"
+END
+
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 

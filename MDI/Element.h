@@ -9,6 +9,7 @@ protected:
   int m_PenWidth;                 // Pen width
   COLORREF m_Color;               // Color of an element
   CRect m_EnclosingRect;          // Rectangle enclosing an element
+  
 
 public:
 	virtual ~CElement();
@@ -32,6 +33,8 @@ protected:
      AfxAbort();
    }
  }
+
+
 };
 
 

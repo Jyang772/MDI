@@ -63,6 +63,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	DockControlBar(&m_wndToolBar);
 
 
+	//Create status bar for coordinates
+
 	return 0;
 }
 

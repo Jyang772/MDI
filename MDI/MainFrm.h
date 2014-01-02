@@ -30,6 +30,8 @@ public:
 
 protected:  // control bar embedded members
 	CToolBar          m_wndToolBar;
+
+public:
 	CStatusBar        m_wndStatusBar;
 
 // Generated message map functions

@@ -29,6 +29,7 @@ CEllipse::CEllipse(const CPoint& center, const CPoint& end, COLORREF color) : CE
 	m_EnclosingRect = CRect(m_StartPoint, m_BottomRight);
 	m_EnclosingRect.NormalizeRect();;
 	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
+
 }
 
 

@@ -6,6 +6,7 @@
 #define IDR_MAINFRAME                   128
 #define IDR_SketchTYPE                  130
 #define ID_WINDOW_MANAGER               131
+#define ID_INDICATOR_COORD              310
 #define ID_ELEMENT_LINE                 32771
 #define ID_ELEMENT_RECTANGLE            32772
 #define ID_ELEMENT_CIRCLE               32773
@@ -16,7 +17,6 @@
 #define ID_COLOR_BLUE                   32778
 #define ID_BUTTON32790                  32790
 #define ID_ELEMENT_ELLIPSE              32792
-#define ID_COLOR_Ellipse                32793
 
 // Next default values for new objects
 // 
@@ -25,6 +25,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        310
 #define _APS_NEXT_COMMAND_VALUE         32794
 #define _APS_NEXT_CONTROL_VALUE         1000
-#define _APS_NEXT_SYMED_VALUE           310
+#define _APS_NEXT_SYMED_VALUE           311
 #endif
 #endif
