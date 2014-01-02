@@ -1,16 +1,18 @@
 #pragma once
-#include "Element.h"
+#include "element.h"
+
 class CCircle :
-	public CElement
+  public CElement
 {
 public:
-	
-	virtual ~CCircle();
-	virtual void Draw(CDC* pDC);
-	CCircle(const CPoint& start, const CPoint& end, COLORREF color);
+  virtual ~CCircle(void);
+  virtual void Draw(CDC* pDC) override;                                // Function to display a circle
+
+  
+  CCircle(const CPoint& start, const CPoint& end, COLORREF color);     // Constructor for a circle object
 
 protected:
-	CCircle(void);
-	CPoint m_BottomRight;
+  CPoint m_BottomRight;                                                // Bottom-right point for defining rectangle
+  CCircle(void);                                                       // Default constructor - should not be used
 };
 

@@ -1,22 +1,18 @@
 #pragma once
-#include "Element.h"
+#include "element.h"
 #include <vector>
+
 class CCurve :
-	public CElement
+  public CElement
 {
 public:
-	virtual ~CCurve();
-
-	CCurve(const CPoint& start, const CPoint& end, COLORREF color);
-
-	void Draw(CDC* pDC);
-	void AddSegment(const CPoint& point);                //Add segment to curve
+  virtual ~CCurve(void);
+  virtual void Draw(CDC* pDC) override;                                // Function to display a curve
+  CCurve(const CPoint& first, const CPoint& second, COLORREF color);   // Constructor for a curve object
+  void AddSegment(const CPoint& point);                                // Add a segment to the curve
 
 protected:
-	CCurve(void);
-
-	std::vector<CPoint> m_Points;                      //Vector to contain points on curve
-
-
+  std::vector<CPoint> m_Points;                                        // Points defining the curve
+  CCurve(void);                                                        // Default constructor - should not be used
 };
 

@@ -1,13 +1,15 @@
 
-#include "ElementType.h"
-#include "ElementColor.h"
 // MDIDoc.h : interface of the CMDIDoc class
 //
 
-
 #pragma once
+#include "ElementType.h"
+#include "ElementColor.h"
+#include "Element.h"
+#include <list>
+#include <memory>
 
-
+typedef std::list<std::shared_ptr<CElement>>::const_iterator SketchIterator;
 class CMDIDoc : public CDocument
 {
 protected: // create from serialization only
@@ -32,6 +34,13 @@ public:
 // Implementation
 public:
 	virtual ~CMDIDoc();
+
+    // Add a sketch element
+  void AddElement(std::shared_ptr<CElement>& pElement) {  m_Sketch.push_back(pElement);  }
+
+  // Delete a sketch element
+  void DeleteElement(std::shared_ptr<CElement>& pElement) {  m_Sketch.remove(pElement);  }
+
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
@@ -48,29 +57,32 @@ protected:
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
 public:
-	afx_msg void OnColorBlack();
-	afx_msg void OnColorRed();
-	afx_msg void OnColorGreen();
-	afx_msg void OnColorBlue();
-	afx_msg void OnElementLine();
-	afx_msg void OnElementRectangle();
-	afx_msg void OnElementCircle();
-	afx_msg void OnElementCurve();
-	afx_msg void OnElementEllipse();
+  afx_msg void OnColorBlack();
+  afx_msg void OnColorRed();
+  afx_msg void OnColorGreen();
+  afx_msg void OnColorBlue();
+  afx_msg void OnElementLine();
+  afx_msg void OnElementRectangle();
+  afx_msg void OnElementCircle();
+  afx_msg void OnElementCurve();
 
-	ElementType GetElementType() const { return m_Element; }
-	ElementColor GetElementColor() const { return m_Color; }
+  ElementType GetElementType()const { return m_Element; }
+  ElementColor GetElementColor() const { return m_Color; }
+  SketchIterator begin() const { return std::begin(m_Sketch);  }            // Provide a begin iterator for the sketch
+  SketchIterator end() const { return std::end(m_Sketch);  }                // Provide an end iterator for the sketch
+
 protected:
-	ElementType m_Element;
-	ElementColor m_Color;
+  ElementType m_Element;                                               // Current element type
+  ElementColor m_Color;                                                // Current drawing color
+std::list<std::shared_ptr<CElement>> m_Sketch;                         // A list containing the sketch
+
 public:
-	afx_msg void OnUpdateColorBlack(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateColorRed(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateColorGreen(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateColorBlue(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateElementLine(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateElementRectangle(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateElementCircle(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateElementCurve(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateElementEllipse(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateColorBlack(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateColorRed(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateColorGreen(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateColorBlue(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateElementLine(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateElementRectangle(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateElementCircle(CCmdUI *pCmdUI);
+  afx_msg void OnUpdateElementCurve(CCmdUI *pCmdUI);
 };

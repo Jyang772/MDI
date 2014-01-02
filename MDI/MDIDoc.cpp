@@ -22,24 +22,22 @@
 IMPLEMENT_DYNCREATE(CMDIDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CMDIDoc, CDocument)
-	ON_COMMAND(ID_COLOR_BLACK, &CMDIDoc::OnColorBlack)
-	ON_COMMAND(ID_COLOR_RED, &CMDIDoc::OnColorRed)
-	ON_COMMAND(ID_COLOR_GREEN, &CMDIDoc::OnColorGreen)
-	ON_COMMAND(ID_COLOR_BLUE, &CMDIDoc::OnColorBlue)
-	ON_COMMAND(ID_ELEMENT_LINE, &CMDIDoc::OnElementLine)
-	ON_COMMAND(ID_ELEMENT_RECTANGLE, &CMDIDoc::OnElementRectangle)
-	ON_COMMAND(ID_ELEMENT_CIRCLE, &CMDIDoc::OnElementCircle)
-	ON_COMMAND(ID_ELEMENT_CURVE, &CMDIDoc::OnElementCurve)
-	ON_UPDATE_COMMAND_UI(ID_COLOR_BLACK, &CMDIDoc::OnUpdateColorBlack)
-	ON_UPDATE_COMMAND_UI(ID_COLOR_RED, &CMDIDoc::OnUpdateColorRed)
-	ON_UPDATE_COMMAND_UI(ID_COLOR_GREEN, &CMDIDoc::OnUpdateColorGreen)
-	ON_UPDATE_COMMAND_UI(ID_COLOR_BLUE, &CMDIDoc::OnUpdateColorBlue)
-	ON_UPDATE_COMMAND_UI(ID_ELEMENT_LINE, &CMDIDoc::OnUpdateElementLine)
-	ON_UPDATE_COMMAND_UI(ID_ELEMENT_RECTANGLE, &CMDIDoc::OnUpdateElementRectangle)
-	ON_UPDATE_COMMAND_UI(ID_ELEMENT_CIRCLE, &CMDIDoc::OnUpdateElementCircle)
-	ON_UPDATE_COMMAND_UI(ID_ELEMENT_CURVE, &CMDIDoc::OnUpdateElementCurve)	
-	ON_COMMAND(ID_ELEMENT_ELLIPSE, &CMDIDoc::OnElementEllipse)
-	ON_UPDATE_COMMAND_UI(ID_ELEMENT_ELLIPSE, &CMDIDoc::OnUpdateElementEllipse)
+  ON_COMMAND(ID_COLOR_BLACK, &CMDIDoc::OnColorBlack)
+  ON_COMMAND(ID_COLOR_RED, &CMDIDoc::OnColorRed)
+  ON_COMMAND(ID_COLOR_GREEN, &CMDIDoc::OnColorGreen)
+  ON_COMMAND(ID_COLOR_BLUE, &CMDIDoc::OnColorBlue)
+  ON_COMMAND(ID_ELEMENT_LINE, &CMDIDoc::OnElementLine)
+  ON_COMMAND(ID_ELEMENT_RECTANGLE, &CMDIDoc::OnElementRectangle)
+  ON_COMMAND(ID_ELEMENT_CIRCLE, &CMDIDoc::OnElementCircle)
+  ON_COMMAND(ID_ELEMENT_CURVE, &CMDIDoc::OnElementCurve)
+  ON_UPDATE_COMMAND_UI(ID_COLOR_BLACK, &CMDIDoc::OnUpdateColorBlack)
+  ON_UPDATE_COMMAND_UI(ID_COLOR_RED, &CMDIDoc::OnUpdateColorRed)
+  ON_UPDATE_COMMAND_UI(ID_COLOR_GREEN, &CMDIDoc::OnUpdateColorGreen)
+  ON_UPDATE_COMMAND_UI(ID_COLOR_BLUE, &CMDIDoc::OnUpdateColorBlue)
+  ON_UPDATE_COMMAND_UI(ID_ELEMENT_LINE, &CMDIDoc::OnUpdateElementLine)
+  ON_UPDATE_COMMAND_UI(ID_ELEMENT_RECTANGLE, &CMDIDoc::OnUpdateElementRectangle)
+  ON_UPDATE_COMMAND_UI(ID_ELEMENT_CIRCLE, &CMDIDoc::OnUpdateElementCircle)
+  ON_UPDATE_COMMAND_UI(ID_ELEMENT_CURVE, &CMDIDoc::OnUpdateElementCurve)
 END_MESSAGE_MAP()
 
 
@@ -47,8 +45,8 @@ END_MESSAGE_MAP()
 
 CMDIDoc::CMDIDoc() : m_Element(ElementType::LINE), m_Color(ElementColor::BLACK)
 {
-	
 	// TODO: add one-time construction code here
+
 }
 
 CMDIDoc::~CMDIDoc()
@@ -157,117 +155,103 @@ void CMDIDoc::Dump(CDumpContext& dc) const
 
 void CMDIDoc::OnColorBlack()
 {
-	m_Color = ElementColor::BLACK;
-	
-	// TODO: Add your command handler code here
+   m_Color = ElementColor::BLACK;                // Set the drawing color to black
 }
 
 
 void CMDIDoc::OnColorRed()
 {
-	m_Color = ElementColor::RED;
-	// TODO: Add your command handler code here
+   m_Color = ElementColor::RED;                  // Set the drawing color to red
 }
 
 
 void CMDIDoc::OnColorGreen()
 {
-	m_Color = ElementColor::GREEN;
-	// TODO: Add your command handler code here
+   m_Color = ElementColor::GREEN;               // Set the drawing color to green
 }
 
 
 void CMDIDoc::OnColorBlue()
 {
-	m_Color = ElementColor::BLUE;
-	// TODO: Add your command handler code here
+   m_Color = ElementColor::BLUE;                 // Set the drawing color to blue
 }
 
 
 void CMDIDoc::OnElementLine()
 {
-	m_Element = ElementType::LINE;
-	// TODO: Add your command handler code here
+   m_Element = ElementType::LINE;                // Set element type as a line
 }
 
 
 void CMDIDoc::OnElementRectangle()
 {
-	m_Element = ElementType::RECTANGLE;
-	// TODO: Add your command handler code here
+   m_Element = ElementType::RECTANGLE;           // Set element type as a rectangle
 }
 
 
 void CMDIDoc::OnElementCircle()
 {
-	m_Element = ElementType::CIRCLE;
-
+   m_Element = ElementType::CIRCLE;              // Set element type as a circle
 }
 
 
 void CMDIDoc::OnElementCurve()
 {
-	m_Element = ElementType::CURVE;
+   m_Element = ElementType::CURVE;               // Set element type as a curve
 }
-
-void CMDIDoc::OnElementEllipse()
-{
-	m_Element = ElementType::ELLIPSE;
-}
-
 
 
 void CMDIDoc::OnUpdateColorBlack(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Color == ElementColor::BLACK);
+   // Set menu item Checked if the current color is black
+   pCmdUI->SetCheck(m_Color == ElementColor::BLACK);
 }
 
 
 void CMDIDoc::OnUpdateColorRed(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Color == ElementColor::RED);
+   // Set menu item Checked if the current color is red
+   pCmdUI->SetCheck(m_Color == ElementColor::RED);
 }
 
 
 void CMDIDoc::OnUpdateColorGreen(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Color == ElementColor::GREEN);
+   // Set menu item Checked if the current color is green
+   pCmdUI->SetCheck(m_Color == ElementColor::GREEN);
 }
 
 
 void CMDIDoc::OnUpdateColorBlue(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Color == ElementColor::BLUE);
-	//pCmdUI->SetText(L"Blue");                    //Set Text to uppercase when selected
+   // Set menu item Checked if the current color is blue
+   pCmdUI->SetCheck(m_Color == ElementColor::BLUE);
 }
 
 
 void CMDIDoc::OnUpdateElementLine(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Element == ElementType::LINE);
+   // Set Checked if the current element is a line
+   pCmdUI->SetCheck(m_Element == ElementType::LINE);
 }
 
 
 void CMDIDoc::OnUpdateElementRectangle(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Element == ElementType::RECTANGLE);
+   // Set Checked if the current element is a rectangle
+   pCmdUI->SetCheck(m_Element == ElementType::RECTANGLE);
 }
 
 
 void CMDIDoc::OnUpdateElementCircle(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Element == ElementType::CIRCLE);
+   // Set Checked if the current element is a circle
+   pCmdUI->SetCheck(m_Element == ElementType::CIRCLE);
 }
 
 
 void CMDIDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_Element == ElementType::CURVE);
-}
-
-
-void CMDIDoc::OnUpdateElementEllipse(CCmdUI *pCmdUI)
-{
-
-	pCmdUI->SetCheck(m_Element == ElementType::ELLIPSE);
+   // Set Checked if the current element is a curve
+   pCmdUI->SetCheck(m_Element == ElementType::CURVE);
 }

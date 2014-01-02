@@ -26,9 +26,8 @@ public:
 	virtual int ExitInstance();
 
 // Implementation
-	afx_msg void OnAppAbout();          //Message Handler ; afx_msg identifies as message handler
-	DECLARE_MESSAGE_MAP()                //Macro indicates that class will contain members that are message handlers and will have a message map
-	                                     //in MDI.cpp
+	afx_msg void OnAppAbout();
+	DECLARE_MESSAGE_MAP()
 };
-                                         //CCmdTarget ; The base class for the Microsoft Foundation Class Library message-map architecture.
+
 extern CMDIApp theApp;

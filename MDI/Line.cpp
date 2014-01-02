@@ -2,29 +2,35 @@
 #include "Line.h"
 
 
-CLine::CLine()
+CLine::CLine(void)
 {
 }
 
-CLine::CLine(const CPoint& start, const CPoint& end, COLORREF aColor)
+// CLine class constructor
+CLine::CLine(const CPoint& start, const CPoint& end, COLORREF color) : CElement(start, color), m_EndPoint(end)
 {
-	m_EnclosingRect = CRect(start, end);
-	m_EnclosingRect.NormalizeRect();
-	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
-
+  // Define the enclosing rectangle
+  m_EnclosingRect = CRect(start, end);
+  m_EnclosingRect.NormalizeRect();
+  m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
 }
 
-CLine::~CLine()
+CLine::~CLine(void)
 {
 }
 
+// Draw a CLine object
 void CLine::Draw(CDC* pDC)
 {
-	CPen aPen;
-	CElement::CreatePen(aPen);
-
-	CPen* pOldPen = pDC->SelectObject(&aPen);
-
-	pDC->MoveTo(m_StartPoint);
-	pDC->LineTo(m_EndPoint);
+  // Create a pen for this object and initialize it
+  CPen aPen;
+  CreatePen(aPen);
+        
+  CPen* pOldPen = pDC->SelectObject(&aPen);      // Select the pen
+        
+  // Now draw the line
+  pDC->MoveTo(m_StartPoint);
+  pDC->LineTo(m_EndPoint);
+        
+  pDC->SelectObject(pOldPen);                    // Restore the old pen
 }

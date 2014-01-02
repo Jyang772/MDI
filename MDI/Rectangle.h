@@ -1,18 +1,17 @@
 #pragma once
-#include "Element.h"
+#include "element.h"
 class CRectangle :
-	public CElement
+  public CElement
 {
 public:
-	
-	virtual ~CRectangle();
-	virtual void Draw(CDC* pDC);
-	CRectangle(const CPoint& start, const CPoint& end, COLORREF color);
+  virtual ~CRectangle(void);
+ virtual void Draw(CDC* pDC) override;                                 // Function to display a rectangle
+
+ 
+ CRectangle(const CPoint& start, const CPoint& end, COLORREF color);   // Constructor for a rectangle object
 
 protected:
-
-	CPoint m_BottomRight;
-	CRectangle(void);
-
+  CPoint m_BottomRight;                                                // Bottom-right point for the rectangle
+  CRectangle(void);                                                    // Default constructor - should not be used
 };
 

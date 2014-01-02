@@ -4,6 +4,8 @@
 
 #pragma once
 #include "atltypes.h"
+#include "Element.h"
+#include <memory>
 
 
 class CMDIView : public CView
@@ -37,18 +39,18 @@ public:
 #endif
 
 protected:
-
+  CElement* CreateElement(void) const;                                 // Create a new element on the heap
 // Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+  afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+  afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 protected:
-	// First point recorded for an element
-	CPoint m_FirstPoint;
-	CPoint m_SecondPoint;
+  CPoint m_FirstPoint;                           // First point recorded for an element
+  CPoint m_SecondPoint;                          // Second point recorded for an element
+  std::shared_ptr<CElement> m_pTempElement;
 };
 
 #ifndef _DEBUG  // debug version in MDIView.cpp
