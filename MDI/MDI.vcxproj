@@ -107,6 +107,7 @@
     <ClInclude Include="Element.h" />
     <ClInclude Include="ElementColor.h" />
     <ClInclude Include="ElementType.h" />
+    <ClInclude Include="Ellipse.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MDI.h" />
@@ -122,6 +123,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Curve.cpp" />
     <ClCompile Include="Element.cpp" />
+    <ClCompile Include="Ellipse.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MDI.cpp" />

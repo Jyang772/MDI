@@ -15,6 +15,7 @@
 #include "Rectangle.h"
 #include "Circle.h"
 #include "Curve.h"
+#include "Ellipse.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -199,7 +200,11 @@ CElement* CMDIView::CreateElement(void) const
         
       case ElementType::LINE:
          return new CLine(m_FirstPoint, m_SecondPoint, color);
-        
+
+	  case ElementType::ELLIPSE:
+		  return new CEllipse(m_FirstPoint, m_SecondPoint, color);
+       
+
       default:
          // Something's gone wrong
          AfxMessageBox(_T("Bad Element code"), MB_OK);

@@ -62,6 +62,7 @@ BEGIN
     BUTTON      ID_ELEMENT_RECTANGLE
     BUTTON      ID_ELEMENT_CIRCLE
     BUTTON      ID_ELEMENT_CURVE
+    BUTTON      ID_ELEMENT_ELLIPSE
     SEPARATOR
     BUTTON      ID_COLOR_BLACK
     BUTTON      ID_COLOR_RED
@@ -96,7 +97,7 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About MDI...",          ID_APP_ABOUT
+        MENUITEM "&About MDI...",               ID_APP_ABOUT
     END
 END
 
@@ -137,6 +138,7 @@ BEGIN
         MENUITEM "Rectangle",                   ID_ELEMENT_RECTANGLE
         MENUITEM "Circle",                      ID_ELEMENT_CIRCLE
         MENUITEM "Curve",                       ID_ELEMENT_CURVE
+        MENUITEM "Ellipse",                     ID_ELEMENT_ELLIPSE
     END
     POPUP "&Color"
     BEGIN
@@ -154,7 +156,7 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&About MDI...",          ID_APP_ABOUT
+        MENUITEM "&About MDI...",               ID_APP_ABOUT
     END
 END
 
@@ -395,6 +397,11 @@ BEGIN
     ID_COLOR_RED            "Draw in red\nRed"
     ID_COLOR_GREEN          "Draw in green\nGreen"
     ID_COLOR_BLUE           "Draw in blue\nBlue"
+END
+
+STRINGTABLE
+BEGIN
+    ID_ELEMENT_ELLIPSE      "Draw Ellipse \nDraw Ellipse"
 END
 
 #endif    // English (United States) resources

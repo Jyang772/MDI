@@ -38,6 +38,8 @@ BEGIN_MESSAGE_MAP(CMDIDoc, CDocument)
   ON_UPDATE_COMMAND_UI(ID_ELEMENT_RECTANGLE, &CMDIDoc::OnUpdateElementRectangle)
   ON_UPDATE_COMMAND_UI(ID_ELEMENT_CIRCLE, &CMDIDoc::OnUpdateElementCircle)
   ON_UPDATE_COMMAND_UI(ID_ELEMENT_CURVE, &CMDIDoc::OnUpdateElementCurve)
+  ON_COMMAND(ID_ELEMENT_ELLIPSE, &CMDIDoc::OnElementEllipse)
+  ON_UPDATE_COMMAND_UI(ID_ELEMENT_ELLIPSE, &CMDIDoc::OnUpdateElementEllipse)
 END_MESSAGE_MAP()
 
 
@@ -200,6 +202,12 @@ void CMDIDoc::OnElementCurve()
    m_Element = ElementType::CURVE;               // Set element type as a curve
 }
 
+void CMDIDoc::OnElementEllipse()
+{
+	m_Element = ElementType::ELLIPSE;
+	// TODO: Add your command handler code here
+}
+
 
 void CMDIDoc::OnUpdateColorBlack(CCmdUI *pCmdUI)
 {
@@ -254,4 +262,12 @@ void CMDIDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
 {
    // Set Checked if the current element is a curve
    pCmdUI->SetCheck(m_Element == ElementType::CURVE);
+}
+
+
+
+void CMDIDoc::OnUpdateElementEllipse(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(m_Element == ElementType::ELLIPSE);
+	// TODO: Add your command update UI handler code here
 }
