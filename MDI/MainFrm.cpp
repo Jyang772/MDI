@@ -29,6 +29,7 @@ static UINT indicators[] =
 
 // CMainFrame construction/destruction
 
+
 CMainFrame::CMainFrame()
 {
 	// TODO: add member initialization code here
@@ -95,3 +96,12 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame message handlers
 
+
+bool CMainFrame::DocStat()
+{
+	if (MDIGetActive() != NULL)
+		return true;
+	else
+		return false;
+	
+}

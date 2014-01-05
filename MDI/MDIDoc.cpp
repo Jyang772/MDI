@@ -9,6 +9,8 @@
 #include "MDI.h"
 #endif
 
+#include <string>
+#include "MainFrm.h"
 #include "MDIDoc.h"
 
 #include <propkey.h>
@@ -53,6 +55,11 @@ CMDIDoc::CMDIDoc() : m_Element(ElementType::LINE), m_Color(ElementColor::BLACK)
 
 CMDIDoc::~CMDIDoc()
 {
+	CString Idle = LPCTSTR(AFX_IDS_IDLEMESSAGE);
+	//Idle = LPCTSTR(L"lawlawlwawl");
+	CMainFrame* pFrame = (CMainFrame*)AfxGetApp()->m_pMainWnd;
+	CStatusBar* pStatus = &pFrame->m_wndStatusBar;
+	pStatus->SetPaneText(0, Idle );
 }
 
 BOOL CMDIDoc::OnNewDocument()

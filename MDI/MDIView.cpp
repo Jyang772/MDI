@@ -9,6 +9,7 @@
 #include "MDI.h"
 #endif
 
+
 #include "MDIDoc.h"
 #include "MainFrm.h"
 #include "MDIView.h"
@@ -39,14 +40,19 @@ END_MESSAGE_MAP()
 // CMDIView construction/destruction
 
 CMDIView::CMDIView()
-  : m_FirstPoint(CPoint(0,0)), m_pTempElement(nullptr)
+: m_FirstPoint(CPoint(0, 0)), m_pTempElement(nullptr), m_File(true)
 {
+
+	CMainFrame* pFrame = (CMainFrame*)AfxGetApp()->m_pMainWnd;
+	CMDIChildWnd* pActiveChild = pFrame->MDIGetActive();
+	CStatusBar* pStatus = &pFrame->m_wndStatusBar;
 	// TODO: add construction code here
 
 }
 
 CMDIView::~CMDIView()
 {
+	m_File = false;
 }
 
 BOOL CMDIView::PreCreateWindow(CREATESTRUCT& cs)
@@ -73,7 +79,6 @@ void CMDIView::OnDraw(CDC* pDC)
     if(pDC->RectVisible(pElement->GetEnclosingRect()))                 // Element visible?
       pElement->Draw(pDC);                                             // Yes, draw it.
   }
-
 }
 
 
@@ -145,6 +150,7 @@ void CMDIView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void CMDIView::OnMouseMove(UINT nFlags, CPoint point)
 {
+	
   // Define a Device Context object for the view
   CClientDC aDC(this);                                                 // DC is for this view
 
@@ -174,15 +180,28 @@ void CMDIView::OnMouseMove(UINT nFlags, CPoint point)
     // is recorded in the document object, and draw it
     m_pTempElement.reset(CreateElement());                             // Create a new element
     m_pTempElement->Draw(&aDC);                                        // Draw the element
+
   }
 
-  CString s;
-  s.Format(L"X=%d Y=%d", point.x, point.y);
-  CMainFrame* pFrame = (CMainFrame*)AfxGetApp()->m_pMainWnd;
-  CStatusBar* pStatus = &pFrame->m_wndStatusBar;
-  pStatus->SetPaneText(0, s);
 
 
+
+    { 
+	  CString s;
+	  //s.Format(L"X=%d Y=%d", point.x, point.y);
+	  s.Format(L"X=%d Y=%d", point.x, point.y);
+	  CMainFrame* pFrame = (CMainFrame*)AfxGetApp()->m_pMainWnd;
+	  CMDIChildWnd* pActiveChild = pFrame->MDIGetActive();		  
+	  CStatusBar* pStatus = &pFrame->m_wndStatusBar;
+
+	  //if (pActiveChild && pActiveChild->GetActiveDocument())
+	 
+	     // one or more documents open
+		  pStatus->SetPaneText(0, s);
+	  }
+	 
+ 
+	 
 }
 
 // Create an element of the current type

@@ -54,6 +54,8 @@ protected:
   CPoint m_SecondPoint;                          // Second point recorded for an element
   std::shared_ptr<CElement> m_pTempElement;
 
+  bool m_File = false;
+
 };
 
 #ifndef _DEBUG  // debug version in MDIView.cpp

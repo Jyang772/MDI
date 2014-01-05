@@ -33,6 +33,7 @@ protected:  // control bar embedded members
 
 public:
 	CStatusBar        m_wndStatusBar;
+	bool			  DocStat();
 
 // Generated message map functions
 protected:
